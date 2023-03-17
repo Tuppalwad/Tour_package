@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [{ email: "test@gmail.com", password: "123" }];
-
 const userSlice = createSlice({
   name: "user",
-  initialState: initialState,
+  initialState: {
+    data: [],
+  },
   reducers: {
-    addUser: (data) => {
-      initialState.push(data);
+    addUser: (state, data) => {
+      console.log(data.handler, ",,,,,,,,,,,,,");
+      // insert data initialState at end of array
+      state.data.push(data);
     },
   },
 });

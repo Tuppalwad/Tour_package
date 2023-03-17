@@ -1,32 +1,42 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import Router from "next/router";
 import Navbar from "@/Component/Navbar";
+import { useSelector } from "react-redux";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userdata, setuserdata] = useState([]);
-  const checuser = useSelector((state) => state.user);
-  useEffect(() => {
-    setuserdata(checuser);
-  }, [checuser]);
-
-  const handalsubmit = async (e) => {
+  const user = useSelector((state) => state.user);
+  const handalsubmit = (e) => {
     e.preventDefault();
+    console.log(user.data[0].payload, " d");
     const data = {
       email: email,
       password: password,
     };
-
-    userdata.forEach((element) => {
-      if (element.email === data.email && element.password === data.password) {
-        Router.push("/Tour/UserInterface");
+    user.data.map((item) => {
+      if (data.email === item.payload.email) {
+        if (data.password === item.payload.password) {
+          alert("login success");
+          // Router.push("/dashboard");
+          Router.push("/Tour/UserInterface");
+        } else {
+          alert("password is wrong");
+        }
+      } else {
+        alert("email is wrong");
       }
     });
-    console.log(checuser);
-  };
 
+    // if (data.email === user.data[0].payload.email) {
+    //   if (data.password === user.data[0].payload.password) {
+    //     Router.push("/dashboard");
+    //   } else {
+    //     alert("password is wrong");
+    //   }
+    // }
+  };
   return (
     <>
       <Navbar btn="Logout"></Navbar>

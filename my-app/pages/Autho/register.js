@@ -1,17 +1,19 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addUser } from "@/Redux/index";
 import Navbar from "@/Component/Navbar";
+import Router from "next/router";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.log(password, confirmPassword);
       alert("Passwords don't match");
       return;
     }
@@ -19,7 +21,9 @@ const Register = () => {
       email: email,
       password: password,
     };
+    console.log(data);
     dispatch(addUser(data));
+    Router.push("/Autho/login");
   };
 
   return (

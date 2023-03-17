@@ -19,7 +19,6 @@ const Login = () => {
       if (data.email === item.payload.email) {
         if (data.password === item.payload.password) {
           alert("login success");
-          // Router.push("/dashboard");
           Router.push("/Tour/UserInterface");
         } else {
           alert("password is wrong");
@@ -28,14 +27,6 @@ const Login = () => {
         alert("email is wrong");
       }
     });
-
-    // if (data.email === user.data[0].payload.email) {
-    //   if (data.password === user.data[0].payload.password) {
-    //     Router.push("/dashboard");
-    //   } else {
-    //     alert("password is wrong");
-    //   }
-    // }
   };
   return (
     <>

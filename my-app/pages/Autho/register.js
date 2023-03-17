@@ -21,7 +21,7 @@ const Register = () => {
       email: email,
       password: password,
     };
-    console.log(data);
+
     dispatch(addUser(data));
     Router.push("/Autho/login");
   };

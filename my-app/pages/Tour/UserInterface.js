@@ -3,7 +3,7 @@ import Navbar from "@/Component/Navbar";
 
 function UserInterface() {
   const [tourdata, settourdata] = useState();
-  const [user, setuser] = useState();
+
   useEffect(() => {
     try {
       fetch("http://localhost:3000/api/tour")
@@ -16,8 +16,6 @@ function UserInterface() {
     }
   }, []);
 
-  console.log(tourdata);
-  console.log(user);
   return (
     <>
       <Navbar btn1="Logout"></Navbar>

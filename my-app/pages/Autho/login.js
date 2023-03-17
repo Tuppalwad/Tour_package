@@ -10,7 +10,6 @@ const Login = () => {
   const user = useSelector((state) => state.user);
   const handalsubmit = (e) => {
     e.preventDefault();
-    console.log(user.data[0].payload, " d");
     const data = {
       email: email,
       password: password,
